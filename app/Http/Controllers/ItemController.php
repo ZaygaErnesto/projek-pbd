@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Item;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class ItemController extends Controller
 {
@@ -50,5 +52,10 @@ class ItemController extends Controller
     {
         $item->delete();
         return redirect()->route('items.index')->with('success', 'Item berhasil dihapus.');
+    }
+    public function lowStock()
+    {
+        $lowStocks = DB::select("CALL LaporanStokRendah()");
+        return view('items.lowstock', compact('lowStocks'));
     }
 } 

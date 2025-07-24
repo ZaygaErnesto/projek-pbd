@@ -13,12 +13,12 @@
         <nav class="mt-6">
             <a href="{{ route('categories.index') }}" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200">Categories</a>
             <a href="{{ route('items.index') }}" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200">Items</a>
-            <a href="{{ route('item-details.index') }}" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200">Item Details</a>
+            {{-- <a href="{{ route('item-details.index') }}" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200">Item Details</a> --}}
             <a href="{{ route('item-tags.index') }}" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200">Item Tags</a>
-            <a href="{{ route('item-tag-pivot.index') }}" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200">Item Tag Pivot</a>
+            {{-- <a href="{{ route('item-tag-pivot.index') }}" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200">Item Tag Pivot</a> --}}
             <a href="{{ route('stock-in.index') }}" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200">Stock In</a>
             <a href="{{ route('stock-out.index') }}" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200">Stock Out</a>
-            <a href="{{ route('stock-log.index') }}" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200">Stock Log</a>
+            {{-- <a href="{{ route('stock-log.index') }}" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200">Stock Log</a> --}}
             <a href="{{ route('suppliers.index') }}" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200">Suppliers</a>
             <a href="{{ route('users.index') }}" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-200">Users</a>
         </nav>
