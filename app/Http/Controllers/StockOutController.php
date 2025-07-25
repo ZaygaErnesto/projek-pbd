@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\StockOut;
+use App\Models\Item;
 use Illuminate\Http\Request;
 
 class StockOutController extends Controller
@@ -21,11 +22,23 @@ class StockOutController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'item_id' => 'required|integer',
-            'quantity' => 'required|integer',
+            'item_id' => 'required|exists:items,id',
+            'quantity' => 'required|integer|min:1',
         ]);
-        StockOut::create($request->all());
-        return redirect()->route('stock-out.index')->with('success', 'Stock Out berhasil ditambahkan.');
+
+        // Tambah record stock_out
+        StockOut::create([
+            'item_id' => $request->item_id,
+            'quantity' => $request->quantity,
+            'date' => now()->toDateString(),
+        ]);
+
+        // Kurangi stok pada tabel items
+        $item = Item::find($request->item_id);
+        $item->stock -= $request->quantity;
+        $item->save();
+
+        return redirect()->route('stock-out.index')->with('success', 'Stock out berhasil dan stok barang berkurang.');
     }
 
     public function show(StockOut $out)
@@ -53,4 +66,4 @@ class StockOutController extends Controller
         $out->delete();
         return redirect()->route('stock-out.index')->with('success', 'Stock Out berhasil dihapus.');
     }
-} 
+}

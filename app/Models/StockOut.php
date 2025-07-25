@@ -10,4 +10,6 @@ class StockOut extends Model
     use HasFactory;
     protected $table = 'stock_out';
     protected $guarded = [];
-} 
+    protected $fillable = ['item_id', 'quantity', 'date'];
+    public $timestamps = false; // Tambahkan baris ini
+}

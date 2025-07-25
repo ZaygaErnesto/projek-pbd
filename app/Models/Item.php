@@ -10,4 +10,6 @@ class Item extends Model
     use HasFactory;
     protected $table = 'items';
     protected $guarded = [];
-} 
+    protected $fillable = ['name', 'stock', /* kolom lain */];
+    public $timestamps = false; // Tambahkan baris ini
+}

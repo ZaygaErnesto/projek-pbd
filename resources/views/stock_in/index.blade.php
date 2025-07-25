@@ -14,6 +14,7 @@
                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Item ID</th>
                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Jumlah</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tanggal</th>
                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Aksi</th>
             </tr>
         </thead>
@@ -23,9 +24,8 @@
                 <td class="px-6 py-4 whitespace-nowrap">{{ $in->id }}</td>
                 <td class="px-6 py-4 whitespace-nowrap">{{ $in->item_id ?? '-' }}</td>
                 <td class="px-6 py-4 whitespace-nowrap">{{ $in->quantity ?? '-' }}</td>
+                <td class="px-6 py-4 whitespace-nowrap">{{ $in->date ?? '-' }}</td>
                 <td class="px-6 py-4 whitespace-nowrap flex gap-2">
-                    <a href="{{ route('stock-in.show', $in) }}" class="text-blue-600 hover:underline">Lihat</a>
-                    <a href="{{ route('stock-in.edit', $in) }}" class="text-yellow-600 hover:underline">Edit</a>
                     <form action="{{ route('stock-in.destroy', $in) }}" method="POST" onsubmit="return confirm('Yakin hapus?');">
                         @csrf
                         @method('DELETE')
@@ -37,4 +37,4 @@
         </tbody>
     </table>
 </div>
-@endsection 
+@endsection

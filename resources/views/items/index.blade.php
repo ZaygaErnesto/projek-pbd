@@ -25,9 +25,9 @@
                 <td class="px-6 py-4 whitespace-nowrap">{{ $item->name ?? '-' }}</td>
                 <td class="px-6 py-4 whitespace-nowrap">{{ $item->stock ?? '-' }}</td>
                 <td class="px-6 py-4 whitespace-nowrap flex gap-2">
-                    <a href="{{ route('items.show', $item) }}" class="text-blue-600 hover:underline">Lihat</a>
-                    <a href="{{ route('items.edit', $item) }}" class="text-yellow-600 hover:underline">Edit</a>
-                    <form action="{{ route('items.destroy', $item) }}" method="POST" onsubmit="return confirm('Yakin hapus?');">
+                    <a href="{{ route('items.show', $item->id) }}" class="text-blue-600 hover:underline">Lihat</a>
+                    <a href="{{ route('items.edit', $item->id) }}" class="text-yellow-600 hover:underline">Edit</a>
+                    <form action="{{ route('items.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Yakin hapus?');">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="text-red-600 hover:underline">Hapus</button>
@@ -38,4 +38,4 @@
         </tbody>
     </table>
 </div>
-@endsection 
+@endsection

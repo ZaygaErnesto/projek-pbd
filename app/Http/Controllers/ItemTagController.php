@@ -21,10 +21,12 @@ class ItemTagController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
+            'tag_name' => 'required|string|max:255',
         ]);
-        ItemTag::create($request->all());
-        return redirect()->route('item-tags.index')->with('success', 'Item Tag berhasil ditambahkan.');
+        \App\Models\ItemTag::create([
+            'tag_name' => $request->tag_name,
+        ]);
+        return redirect()->route('item-tags.index')->with('success', 'Item tag berhasil ditambahkan.');
     }
 
     public function show(ItemTag $item_tag)
@@ -51,4 +53,4 @@ class ItemTagController extends Controller
         $item_tag->delete();
         return redirect()->route('item-tags.index')->with('success', 'Item Tag berhasil dihapus.');
     }
-} 
+}

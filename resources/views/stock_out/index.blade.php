@@ -24,8 +24,6 @@
                 <td class="px-6 py-4 whitespace-nowrap">{{ $out->item_id ?? '-' }}</td>
                 <td class="px-6 py-4 whitespace-nowrap">{{ $out->quantity ?? '-' }}</td>
                 <td class="px-6 py-4 whitespace-nowrap flex gap-2">
-                    <a href="{{ route('stock-out.show', $out) }}" class="text-blue-600 hover:underline">Lihat</a>
-                    <a href="{{ route('stock-out.edit', $out) }}" class="text-yellow-600 hover:underline">Edit</a>
                     <form action="{{ route('stock-out.destroy', $out) }}" method="POST" onsubmit="return confirm('Yakin hapus?');">
                         @csrf
                         @method('DELETE')

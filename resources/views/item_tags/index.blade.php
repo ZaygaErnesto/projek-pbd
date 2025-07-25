@@ -20,7 +20,7 @@
             @foreach($item_tags as $item_tag)
             <tr>
                 <td class="px-6 py-4">{{ $item_tag->id }}</td>
-                <td class="px-6 py-4">{{ $item_tag->tag_name ?? '-' }}</td>
+                <td class="px-6 py-4">{{ $item_tag->tag_name }}</td>
                 <td class="px-6 py-4 flex gap-2">
                     <a href="{{ route('item-tags.show', $item_tag) }}" class="text-blue-600 hover:underline">Lihat</a>
                     <a href="{{ route('item-tags.edit', $item_tag) }}" class="text-yellow-600 hover:underline">Edit</a>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\StockIn;
+use App\Models\Item;
 use Illuminate\Http\Request;
 
 class StockInController extends Controller
@@ -21,11 +22,23 @@ class StockInController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'item_id' => 'required|integer',
-            'quantity' => 'required|integer',
+            'item_id' => 'required|exists:items,id',
+            'quantity' => 'required|integer|min:1',
         ]);
-        StockIn::create($request->all());
-        return redirect()->route('stock-in.index')->with('success', 'Stock In berhasil ditambahkan.');
+
+        // Tambah record stock_in
+        StockIn::create([
+            'item_id' => $request->item_id,
+            'quantity' => $request->quantity,
+            'date' => now()->toDateString(),
+        ]);
+
+        // Tambah stok pada tabel items
+        $item = Item::find($request->item_id);
+        $item->stock += $request->quantity;
+        $item->save();
+
+        return redirect()->route('stock-in.index')->with('success', 'Stock in berhasil ditambahkan dan stok barang bertambah.');
     }
 
     public function show(StockIn $in)
@@ -53,4 +66,4 @@ class StockInController extends Controller
         $in->delete();
         return redirect()->route('stock-in.index')->with('success', 'Stock In berhasil dihapus.');
     }
-} 
+}
